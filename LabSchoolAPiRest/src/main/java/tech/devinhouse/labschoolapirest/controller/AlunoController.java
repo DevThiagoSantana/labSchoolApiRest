@@ -1,17 +1,17 @@
 package tech.devinhouse.labschoolapirest.controller;
 
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
+//import io.swagger.v3.oas.annotations.Operation;
+//import io.swagger.v3.oas.annotations.media.Content;
+//import io.swagger.v3.oas.annotations.media.Schema;
+//import io.swagger.v3.oas.annotations.responses.ApiResponse;
+//import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tech.devinhouse.labschoolapirest.dto.AlunoRequest;
 import tech.devinhouse.labschoolapirest.dto.AlunoResponse;
-import tech.devinhouse.labschoolapirest.dto.ErroResponse;
+//import tech.devinhouse.labschoolapirest.dto.ErroResponse;
 import tech.devinhouse.labschoolapirest.model.Aluno;
 import tech.devinhouse.labschoolapirest.service.AlunoService;
 
@@ -53,9 +53,32 @@ public class AlunoController {
     public ResponseEntity<List<AlunoResponse>>listar(){
         List<Aluno>alunos = service.consultar();
         List<AlunoResponse>resp = new ArrayList<>();
-        for (Aluno aluno:alunos){
+        for (Aluno aluno:alunos) {
             AlunoResponse alunoResp = mapper.map(aluno, AlunoResponse.class);
+            resp.add(alunoResp);
         }
+        return  ResponseEntity.ok(resp);
+    }
+    @GetMapping("{codigo}")
+    public ResponseEntity<AlunoResponse> consultarPeloId(@PathVariable("codigo") Integer codigo) {
+        Aluno aluno = service.consultar(codigo);
+        AlunoResponse resp = mapper.map(aluno, AlunoResponse.class);
+        return ResponseEntity.ok(resp);
+    }
+
+    @PutMapping("{codigo}")
+    public ResponseEntity<AlunoResponse> atualizar(@PathVariable("codigo") Integer codigo, @RequestBody @Valid AlunoRequest request) {
+        Aluno aluno = mapper.map(request, Aluno.class);
+        aluno.setCodigo(codigo);
+        aluno= service.atualziarMatricula(aluno);
+        AlunoResponse resp = mapper.map(aluno, AlunoResponse.class);
+        return ResponseEntity.ok(resp);
+    }
+
+    @DeleteMapping("{codigo}")
+    public ResponseEntity excluir(@PathVariable("codigo") Integer codigo) {
+        service.excluir(codigo);
+        return ResponseEntity.noContent().build();
     }
 
 }

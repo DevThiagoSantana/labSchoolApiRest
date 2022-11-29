@@ -16,7 +16,7 @@ import java.time.LocalDate;
 public class Aluno extends Pessoa{
 
 
-    @Column(name = "SITUACAO",nullable = false)
+
     @Enumerated(EnumType.STRING)
     private SituacaoDaMatricula situacao;
 
@@ -24,10 +24,10 @@ public class Aluno extends Pessoa{
 
     private int atendimentoAluno;
 
-    public Aluno(Integer codigo, String nome, String telefone, LocalDate dataDeNascimento, Long cpf,Float nota,SituacaoDaMatricula situacao) {
+    public Aluno(Integer codigo, String nome, String telefone, LocalDate dataDeNascimento, Long cpf,SituacaoDaMatricula situacao,Float nota) {
         super(codigo, nome, telefone, dataDeNascimento, cpf);
-        this.nota=nota;
         this.situacao=situacao;
+        this.nota=nota;
         this.atendimentoAluno=0;
     }
 }
