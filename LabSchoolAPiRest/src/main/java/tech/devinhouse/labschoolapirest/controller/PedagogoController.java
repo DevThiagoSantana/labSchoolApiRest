@@ -26,13 +26,6 @@ public class PedagogoController {
     private PedagogoService service;
 
 
-    @PostMapping
-    public ResponseEntity<PedagogoResponse> criar(@RequestBody @Valid AlunoRequest request){
-        Pedagogo pedagogo= mapper.map(request, Pedagogo.class);
-        pedagogo =service.salvar(pedagogo);
-        PedagogoResponse resp= mapper.map(pedagogo, PedagogoResponse.class);
-        return ResponseEntity.created(URI.create(resp.getCodigo().toString())).body(resp);
-    }
 
     @GetMapping
     public ResponseEntity<List<PedagogoResponse>>listar(){

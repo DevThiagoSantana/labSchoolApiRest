@@ -2,8 +2,11 @@ package tech.devinhouse.labschoolapirest.dto;
 
 import lombok.Data;
 import tech.devinhouse.labschoolapirest.model.SituacaoDaMatricula;
+import tech.devinhouse.labschoolapirest.validator.ValorDeEnum;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
@@ -18,15 +21,17 @@ public class AlunoRequest {
     @Size(min=8, max=15, message = "{campo.invalido}")
     private String telefone;
 
-    @NotEmpty(message = "{campo.obrigatorio}")
+    @NotNull(message = "{campo.obrigatorio}")
     private LocalDate dataDeNascimento;
 
-    @NotEmpty(message = "{campo.obrigatorio}")
+    @NotNull(message = "{campo.obrigatorio}")
     private Long cpf;
 
     @NotEmpty(message = "{campo.obrigatorio}")
-    private SituacaoDaMatricula situacao;
+    @ValorDeEnum(enumClass = SituacaoDaMatricula.class,message = "{campo.invalido}")
+//    @Pattern(regexp = "ATIVO|IRREGULAR|ATENDIMENTO_PEDAGOGICO|INATIVO", flags = Pattern.Flag.CASE_INSENSITIVE, message = "{campo.invalido}")
+    private String situacao;
 
-    @NotEmpty(message = "{campo.obrigatorio}")
+    @NotNull(message = "{campo.obrigatorio}")
     private Float nota;
 }

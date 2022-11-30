@@ -14,17 +14,11 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class Professor extends Pessoa{
 
-
-
     @Enumerated(EnumType.STRING)
     private EstadoProfessor estado;
 
-
-
     @Enumerated(EnumType.STRING)
     private ExperienciaProfessor experiencia;
-
-
 
     @Enumerated(EnumType.STRING)
     private FormacaoProfessor formacao;

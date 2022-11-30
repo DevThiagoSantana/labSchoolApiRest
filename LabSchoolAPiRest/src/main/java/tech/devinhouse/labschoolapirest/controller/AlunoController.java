@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.*;
 import tech.devinhouse.labschoolapirest.dto.AlunoRequest;
 import tech.devinhouse.labschoolapirest.dto.AlunoResponse;
 //import tech.devinhouse.labschoolapirest.dto.ErroResponse;
+import tech.devinhouse.labschoolapirest.dto.MatriculaRequest;
 import tech.devinhouse.labschoolapirest.model.Aluno;
+import tech.devinhouse.labschoolapirest.model.SituacaoDaMatricula;
 import tech.devinhouse.labschoolapirest.service.AlunoService;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,8 +53,11 @@ public class AlunoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<AlunoResponse>>listar(){
-        List<Aluno>alunos = service.consultar();
+    public ResponseEntity<List<AlunoResponse>>listar(@RequestParam(value = "situacao", required = false)
+                                                         @Pattern(regexp = "ATIVO|IRREGULAR|ATENDIMENTO_PEDAGOGICO|INATIVO",
+                                                                 flags = Pattern.Flag.CASE_INSENSITIVE, message = "{campo.invalido}") String situacao){
+
+        List<Aluno>alunos = service.consultar(situacao);
         List<AlunoResponse>resp = new ArrayList<>();
         for (Aluno aluno:alunos) {
             AlunoResponse alunoResp = mapper.map(aluno, AlunoResponse.class);
@@ -67,7 +73,7 @@ public class AlunoController {
     }
 
     @PutMapping("{codigo}")
-    public ResponseEntity<AlunoResponse> atualizar(@PathVariable("codigo") Integer codigo, @RequestBody @Valid AlunoRequest request) {
+    public ResponseEntity<AlunoResponse> atualizar(@PathVariable("codigo") Integer codigo, @RequestBody @Valid MatriculaRequest request) {
         Aluno aluno = mapper.map(request, Aluno.class);
         aluno.setCodigo(codigo);
         aluno= service.atualziarMatricula(aluno);

@@ -19,6 +19,8 @@ public class Pedagogo extends Pessoa{
     private int atendimentoPedagogo;
 
     public Pedagogo(Integer codigo, String nome, String telefone, LocalDate dataDeNascimento, Long cpf){
+        super(codigo, nome, telefone, dataDeNascimento, cpf);
         this.atendimentoPedagogo=0;
+
     }
 }

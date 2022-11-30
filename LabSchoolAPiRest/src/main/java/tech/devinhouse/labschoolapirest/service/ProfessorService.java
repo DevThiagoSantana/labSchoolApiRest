@@ -5,8 +5,6 @@ import org.springframework.stereotype.Service;
 import tech.devinhouse.labschoolapirest.exception.RegistroExistenteException;
 import tech.devinhouse.labschoolapirest.exception.RegistroNaoEncontradoException;
 import tech.devinhouse.labschoolapirest.model.Professor;
-import tech.devinhouse.labschoolapirest.model.Professor;
-import tech.devinhouse.labschoolapirest.model.Professor;
 import tech.devinhouse.labschoolapirest.repository.ProfessorRepository;
 
 import java.util.List;

@@ -8,6 +8,7 @@ import tech.devinhouse.labschoolapirest.model.Aluno;
 import tech.devinhouse.labschoolapirest.repository.AlunoRepository;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,9 +25,23 @@ public class AlunoService {
                 aluno= repo.save(aluno);
         return aluno;
     }
-
-    public List<Aluno> consultar(){
+    public List<Aluno>consultar(){
         return repo.findAll();
+    }
+
+    public List<Aluno> consultar(String situacao){
+        List<Aluno> alunos =repo.findAll();
+        if (situacao == null){
+        return alunos;
+        }
+        List<Aluno>lista = new ArrayList<>();
+        for (Aluno aluno: alunos){
+            if (aluno.getSituacao().toString().equals(situacao) )
+                lista.add(aluno);
+        }
+        return lista;
+
+
     }
 
     public Aluno consultar(Integer id){
