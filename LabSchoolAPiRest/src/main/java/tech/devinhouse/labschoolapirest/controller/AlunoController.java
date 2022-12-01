@@ -32,18 +32,6 @@ public class AlunoController {
 
     private AlunoService service;
 
-//    @Operation(summary = "Serviço de Cadastro de Aluno", description = "Insere alunos no servidor para ficar disponível para acesso dos usuários")
-//    @ApiResponses(
-//            value = {
-//                    @ApiResponse(responseCode = "201", description = "Aluno cadastrado com sucesso",
-//                            content = { @Content(schema = @Schema(implementation = AlunoResponse.class)) }),
-//                    @ApiResponse(responseCode = "409", description = "Aluno com CPF já cadastrado",
-//                            content = { @Content(schema = @Schema(implementation = ErroResponse.class)) }),
-//                    @ApiResponse(responseCode = "400", description = "Requisição com dados inválidos ",
-//                            content = { @Content(schema = @Schema(implementation = ErroResponse.class)) }
-//                    )
-//            }
-//    )
     @PostMapping
     public ResponseEntity<AlunoResponse> criar(@RequestBody @Valid AlunoRequest request){
         Aluno aluno= mapper.map(request, Aluno.class);

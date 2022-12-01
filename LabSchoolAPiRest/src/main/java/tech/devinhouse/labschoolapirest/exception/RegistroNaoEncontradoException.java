@@ -10,9 +10,6 @@ public class RegistroNaoEncontradoException extends RuntimeException {
 
         this(nomeRecurso, String.valueOf(id));
     }
-    public RegistroNaoEncontradoException(String nomeRecurso, Long id) {
 
-        this(nomeRecurso, String.valueOf(id));
-    }
 
 }

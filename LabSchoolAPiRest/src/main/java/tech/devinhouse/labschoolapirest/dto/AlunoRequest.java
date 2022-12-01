@@ -6,7 +6,6 @@ import tech.devinhouse.labschoolapirest.validator.ValorDeEnum;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
@@ -29,7 +28,6 @@ public class AlunoRequest {
 
     @NotEmpty(message = "{campo.obrigatorio}")
     @ValorDeEnum(enumClass = SituacaoDaMatricula.class,message = "{campo.invalido}")
-//    @Pattern(regexp = "ATIVO|IRREGULAR|ATENDIMENTO_PEDAGOGICO|INATIVO", flags = Pattern.Flag.CASE_INSENSITIVE, message = "{campo.invalido}")
     private String situacao;
 
     @NotNull(message = "{campo.obrigatorio}")
