@@ -22,131 +22,46 @@ spring.datasource.url=jdbc:mariadb://localhost:3306/labschoolbd
 	Na inicialização do sistema, devem ser carregados os dados iniciais das pessoas listadas abaixo. Implementar estratégia para não haver problemas de inserção duplicada de dados ou falha de carregamento devido a dados anteriormente inseridos (usar condicional para verificar se já foi carregado ou usar a estratégia “create-drop” para recriar o Banco de Dados a cada execução do sistema - exemplo: spring.jpa.hibernate.ddl-auto=create-drop).
 Dados iniciais para carregamento:
 
-ALUNOS
+ALUNOS:
 código| nome| telefone |data de nascimento|cpf|Situação da Matrícula|Nota |Qtd Atendimentos
 
-auto-increment| Bart Simpson |11-11111-1212| 2014-10-29 |11839750073
-IRREGULAR
-3.5
-0
-auto-increment
-Lisa Simpson
-11-22222-2222
-2012-10-29 
-17158947076
-ATIVO
-10
-0
-auto-increment
-Meggie Simpson
-12-20002-2200
-2019-10-29
-63701210020
-ATIVO
-9
-0
-auto-increment
-Milhouse Van Houten
-11-33333-2222
-2014-10-29
-30119137062
-ATIVO
-8
-0
-auto-increment
-Nelson Muntz
-11-44333-4444
-2007-10-29
-95704094015
-INATIVO
-2
-0
+auto-increment| Bart Simpson |11-11111-1212| 2014-10-29 |11839750073|IRREGULAR|3.5|0
+
+auto-increment| Lisa Simpson| 11-22222-2222| 2012-10-29 |17158947076|ATIVO|10|0
+
+auto-increment|Meggie Simpson|12-20002-2200| 2019-10-29|63701210020 |ATIVO|9|0
+
+auto-increment|Milhouse Van Houten|11-33333-2222|2014-10-29|30119137062|ATIVO|8|0
+
+auto-increment|Nelson Muntz|11-44333-4444|2007-10-29|95704094015|INATIVO|2|0
 
 
-PROFESSORES
-código
-nome
-telefone
-data de nascimento
-cpf
-Estado
-Experiência 
-Formação Acadêmica
-auto-increment
-Walter White
-14-22998-1882
-1982-10-30
+PROFESSORES:
+
+código|nome|telefone|data de nascimento|cpf|Estado|Experiência|Formação Acadêmica
+
+auto-increment|Walter White|14-22998-1882|1982-10-30|40539019011|ATIVO |FULL_STACK|MESTRADO
+
+auto-increment|Jesse Pinkman|44-11111-1992|1997-10-30|96107295097|ATIVO |BACK_END |GRADUACAO_INCOMPLETA
+
+auto-increment|Hank Schrader|44-11111-1002|1984-10-30 |70685977005 |ATIVO |FULL_STACK|MESTRADO
+
+auto-increment|Gustavo Fring|44-11001-1002|1977-10-30 |57408927085 |INATIVO |FRONT_END| GRADUACAO_COMPLETA
+
+auto-increment|Saul Goodman |44-11998-1882|1980-10-30 |86940162062 |ATIVO |FULL_STACK |MESTRADO
 
 
-40539019011
-ATIVO
-FULL_STACK
-MESTRADO
-auto-increment
-Jesse Pinkman
-44-11111-1992
-1997-10-30 
-96107295097
-ATIVO
-BACK_END
-GRADUACAO_INCOMPLETA
-auto-increment
-Hank Schrader
-44-11111-1002
-1984-10-30
-70685977005
-ATIVO
-FULL_STACK
-MESTRADO
-auto-increment
-Gustavo Fring
-44-11001-1002
-1977-10-30
-57408927085
-INATIVO
-FRONT_END
-GRADUACAO_COMPLETA
-auto-increment
-Saul Goodman
-44-11998-1882
-1980-10-30
-86940162062
-ATIVO
-FULL_STACK
-MESTRADO
+PEDAGOGOS:
 
+código|nome|telefone|data de nascimento|cpf|Qtd Atendimentos|
 
-PEDAGOGOS
-código
-nome
-telefone
-data de nascimento
-cpf
-Qtd Atendimentos
-auto-increment
-John Snow
-11-67333-4454
-2000-10-30
-62316840086
-0
-auto-increment
-Sansa Stark
-22-22333-4454
-2004-10-30 
-49850253053
-0
-auto-increment
- Tyrion Lannister
- 33-77333-4454
-1990-10-30
-39125106015
-0
-auto-increment
- Sandor Clegane
-11-33333-2222
-1995-10-30
-89089606009
-0
+auto-increment|John Snow|11-67333-4454|2000-10-30|62316840086|0 |
+
+auto-increment|Sansa Stark|22-22333-4454|2004-10-30 |49850253053|0
+
+auto-increment| Tyrion Lannister| 33-77333-4454|1990-10-30|39125106015|0
+
+auto-increment| Sandor Clegane |11-33333-2222 |1995-10-30 |89089606009|0
 
 
 
