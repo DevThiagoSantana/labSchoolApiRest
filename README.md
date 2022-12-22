@@ -75,6 +75,7 @@ Requisição:
 HTTP POST no path /api/alunos
 No corpo da request, informar objeto json com os seguintes campos: nome, telefone, dataNascimento, cpf, situacao, nota, conforme exemplo abaixo. Usar exatamente esta nomenclatura de campos no json da requisição. 
 Todos os campos devem ser validados como sendo de preenchimento obrigatório. O CPF deve ser único por aluno (validar se o CPF informado já foi cadastrado).
+
 {
 
    "nome": "Krusty",
@@ -91,9 +92,11 @@ Todos os campos devem ser validados como sendo de preenchimento obrigatório. O 
    
 }
 
+
 Response: 
 HTTP Status Code 201 (CREATED) em caso de sucesso, constando no corpo da resposta o código atribuído ao novo aluno cadastrado, além dos demais campos. No response, retornar os campos adicionais “codigo” e “atendimentos”, usando obrigatoriamente estes nomes para os campos.
 Exemplo:
+
 {
 
    "codigo": 8,
@@ -113,6 +116,7 @@ Exemplo:
    "atendimentos": 0
    
 }
+
 HTTP Status Code 400 (Bad Request) em caso de requisição com dados inválidos, informando mensagem de erro explicativa no corpo do response. 
 HTTP Status Code 409 (Conflict) em caso de CPF já cadastrado para outro aluno, informando mensagem de erro explicativa no corpo do response. 
 
@@ -124,13 +128,16 @@ Requisição:
 HTTP PUT no path /api/alunos/{codigo}
 No corpo da request, informar objeto json com campo: situacao, conforme exemplo abaixo. Usar exatamente esta nomenclatura de campo no json. 
 O campo deve ser validado como sendo obrigatório e pertencente aos valores possíveis para este campo.
+
 {
    "situacao": "IRREGULAR"
 }
 
+
 Response: 
 HTTP Status Code 200 (OK) em caso de sucesso, constando no corpo da resposta os dados atualizados do aluno.
 Exemplo:
+
 {
 
    "codigo": 3,
@@ -150,6 +157,7 @@ Exemplo:
    "atendimentos": 0
    
 }
+
 HTTP Status Code 400 (Bad Request) em caso de requisição com dados inválidos, informando mensagem de erro explicativa no corpo do response. 
 HTTP Status Code 404 (Not Found) em caso de não ser encontrado registro com o código informado, retornando mensagem de erro explicativa no corpo do response. 
 
@@ -169,6 +177,7 @@ Response:
 HTTP Status Code 200 (OK), com a lista de usuários.
 Exemplo:
 [
+   
    {
        "codigo": 1,
        
@@ -187,6 +196,7 @@ Exemplo:
        "atendimentos": 0
        
    },
+   
    {
        "codigo": 2,
        
@@ -205,6 +215,7 @@ Exemplo:
        "atendimentos": 0
        
    }
+   
 ]
 
 
@@ -217,6 +228,7 @@ Não é necessário request body.
 Response: 
 HTTP Status Code 200 (OK), com o dados do aluno..
 Exemplo:
+
 {
    "codigo": 1,
    
@@ -235,6 +247,7 @@ Exemplo:
    "atendimentos": 0
    
 }
+
 HTTP Status Code 404 (Not Found) em caso de não ser encontrado registro com o código informado, retornando mensagem de erro explicativa no corpo do response. 
 
 RF06 - Exclusão de Aluno
@@ -260,6 +273,7 @@ Response:
 HTTP Status Code 200 (OK), com a lista de professores.
 Exemplo:
 [
+   
    {
    
        "codigo": 4,
@@ -279,6 +293,8 @@ Exemplo:
        "estado": "INATIVO"
        
    },
+   
+   
    {
    
        "codigo": 3,
@@ -298,6 +314,7 @@ Exemplo:
        "estado": "ATIVO"
        
    }
+   
 ]
 
 
@@ -312,6 +329,7 @@ Response:
 HTTP Status Code 200 (OK), com a lista de pedagogos (usar obrigatoriamente o nome dos campos conforme exemplo abaixo).
 Exemplo:
 [
+   
    {
    
        "codigo": 1,
@@ -327,7 +345,9 @@ Exemplo:
        "atendimentos": 0
        
    },
-   {
+   
+  
+  {
    
        "codigo": 2,
        
@@ -342,6 +362,7 @@ Exemplo:
        "atendimentos": 0
        
    }
+   
 ]
 
 
@@ -354,15 +375,18 @@ Requisição:
 HTTP PUT no path /api/atendimentos
 No corpo da request, informar objeto json com os seguintes campos: codigoAluno, codigoPedagogo, conforme exemplo abaixo. Usar exatamente esta nomenclatura de campos no json da requisição. 
 Ambos os campos devem ser validados como sendo de preenchimento obrigatório. 
+
 {
    "codigoAluno": 1,
    
    "codigoPedagogo": 1
    
 }
+
 Response: 
 HTTP Status Code 200 (OK) em caso de sucesso, constando no corpo da resposta todos os campos previstos para aluno e pedagogo, conforme exemplo abaixo (usar nomenclatura dos campos conforme exemplo).
 Exemplo:
+
 {
    "aluno": {
    
@@ -383,6 +407,7 @@ Exemplo:
        "atendimentos": 1
        
    },
+   
    "pedagogo": {
    
        "codigo": 1,
