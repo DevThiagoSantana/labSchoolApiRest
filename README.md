@@ -76,26 +76,42 @@ HTTP POST no path /api/alunos
 No corpo da request, informar objeto json com os seguintes campos: nome, telefone, dataNascimento, cpf, situacao, nota, conforme exemplo abaixo. Usar exatamente esta nomenclatura de campos no json da requisição. 
 Todos os campos devem ser validados como sendo de preenchimento obrigatório. O CPF deve ser único por aluno (validar se o CPF informado já foi cadastrado).
 {
+
    "nome": "Krusty",
+   
    "telefone": "99-99876-0001",
+   
    "dataNascimento": "1970-01-02",
+   
    "cpf": 18250669061,
+   
    "situacao": "IRREGULAR",
+   
    "nota": 7.5
+   
 }
 
 Response: 
 HTTP Status Code 201 (CREATED) em caso de sucesso, constando no corpo da resposta o código atribuído ao novo aluno cadastrado, além dos demais campos. No response, retornar os campos adicionais “codigo” e “atendimentos”, usando obrigatoriamente estes nomes para os campos.
 Exemplo:
 {
+
    "codigo": 8,
+   
    "nome": "Krusty",
+   
    "telefone": "99-99876-0001",
+   
    "dataNascimento": "1970-01-31",
+   
    "cpf": 18250669061,
+   
    "situacao": "IRREGULAR",
+   
    "nota": 7.5,
+   
    "atendimentos": 0
+   
 }
 HTTP Status Code 400 (Bad Request) em caso de requisição com dados inválidos, informando mensagem de erro explicativa no corpo do response. 
 HTTP Status Code 409 (Conflict) em caso de CPF já cadastrado para outro aluno, informando mensagem de erro explicativa no corpo do response. 
@@ -116,14 +132,23 @@ Response:
 HTTP Status Code 200 (OK) em caso de sucesso, constando no corpo da resposta os dados atualizados do aluno.
 Exemplo:
 {
+
    "codigo": 3,
+   
    "nome": "Meggie Simpson",
+   
    "telefone": "12-20002-2200",
+   
    "dataNascimento": "2019-10-29",
+   
    "cpf": 20011111111,
+   
    "situacao": "IRREGULAR",
+   
    "nota": 9.0,
+   
    "atendimentos": 0
+   
 }
 HTTP Status Code 400 (Bad Request) em caso de requisição com dados inválidos, informando mensagem de erro explicativa no corpo do response. 
 HTTP Status Code 404 (Not Found) em caso de não ser encontrado registro com o código informado, retornando mensagem de erro explicativa no corpo do response. 
@@ -146,23 +171,39 @@ Exemplo:
 [
    {
        "codigo": 1,
+       
        "nome": "Bart Simpson",
+       
        "telefone": "11-11111-1212",
+       
        "dataNascimento": "2014-10-29",
+       
        "cpf": 11111111111,
+       
        "situacao": "IRREGULAR",
+       
        "nota": 3.5,
+       
        "atendimentos": 0
+       
    },
    {
        "codigo": 2,
+       
        "nome": "Lisa Simpson",
+       
        "telefone": "11-22222-2222",
+       
        "dataNascimento": "2012-10-29",
+       
        "cpf": 22211111111,
+       
        "situacao": "ATIVO",
+       
        "nota": 10.0,
+       
        "atendimentos": 0
+       
    }
 ]
 
@@ -178,13 +219,21 @@ HTTP Status Code 200 (OK), com o dados do aluno..
 Exemplo:
 {
    "codigo": 1,
+   
    "nome": "Bart Simpson",
+   
    "telefone": "11-11111-1212",
+   
    "dataNascimento": "2014-10-29",
+   
    "cpf": 11111111111,
+   
    "situacao": "IRREGULAR",
+   
    "nota": 3.5,
+   
    "atendimentos": 0
+   
 }
 HTTP Status Code 404 (Not Found) em caso de não ser encontrado registro com o código informado, retornando mensagem de erro explicativa no corpo do response. 
 
@@ -212,24 +261,42 @@ HTTP Status Code 200 (OK), com a lista de professores.
 Exemplo:
 [
    {
+   
        "codigo": 4,
+       
        "nome": "Gustavo Fring",
+       
        "telefone": "44-11001-1002",
+       
        "dataNascimento": "1977-10-29",
+       
        "cpf": 57408927085,
+       
        "formacao": "GRADUACAO_COMPLETA",
+       
        "experiencia": "FRONT_END",
+       
        "estado": "INATIVO"
+       
    },
    {
+   
        "codigo": 3,
+       
        "nome": "Hank Schrader",
+       
        "telefone": "44-11111-1002",
+       
        "dataNascimento": "1984-10-29",
+       
        "cpf": 70685977005,
+       
        "formacao": "MESTRADO",
+       
        "experiencia": "FULL_STACK",
+       
        "estado": "ATIVO"
+       
    }
 ]
 
@@ -246,20 +313,34 @@ HTTP Status Code 200 (OK), com a lista de pedagogos (usar obrigatoriamente o nom
 Exemplo:
 [
    {
+   
        "codigo": 1,
+       
        "nome": "John Snow",
+       
        "telefone": "11-67333-4454",
+       
        "dataNascimento": "2000-10-29",
+       
        "cpf": 62316840086,
+       
        "atendimentos": 0
+       
    },
    {
+   
        "codigo": 2,
+       
        "nome": "Sansa Stark",
+       
        "telefone": "22-22333-4454",
+       
        "dataNascimento": "2004-10-29",
+       
        "cpf": 49850253053,
+       
        "atendimentos": 0
+       
    }
 ]
 
@@ -275,29 +356,47 @@ No corpo da request, informar objeto json com os seguintes campos: codigoAluno, 
 Ambos os campos devem ser validados como sendo de preenchimento obrigatório. 
 {
    "codigoAluno": 1,
+   
    "codigoPedagogo": 1
+   
 }
 Response: 
 HTTP Status Code 200 (OK) em caso de sucesso, constando no corpo da resposta todos os campos previstos para aluno e pedagogo, conforme exemplo abaixo (usar nomenclatura dos campos conforme exemplo).
 Exemplo:
 {
    "aluno": {
+   
        "codigo": 1,
+       
        "nome": "Bart Simpson",
+       
        "telefone": "11-11111-1212",
+       
        "dataNascimento": "2014-10-29",
+       
        "cpf": 11839750073,
+       
        "situacao": "ATENDIMENTO_PEDAGOGICO",
+       
        "nota": 3.5,
+       
        "atendimentos": 1
+       
    },
    "pedagogo": {
+   
        "codigo": 1,
+       
        "nome": "John Snow",
+       
        "telefone": "11-67333-4454",
+       
        "dataNascimento": "2000-10-29",
+       
        "cpf": 62316840086,
+       
        "atendimentos": 1
+       
    }
 }
 HTTP Status Code 400 (Bad Request) em caso de requisição com dados inválidos/faltantes, informando mensagem de erro explicativa no corpo do response. 
